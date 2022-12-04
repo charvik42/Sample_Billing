@@ -1,0 +1,220 @@
+<html>
+<head>
+  <title>Sample Billing</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> !-->
+  <style>
+    input {
+        width: 250px;
+    }
+    label {
+        display: inline-block; 
+        width: 110px;
+    }
+    body {
+        background-color:aliceblue;
+    }
+    table {
+  font-family: sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+table td, table th {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 3px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color:#ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #92d6db;
+  color: rgb(0, 0, 0);
+}
+
+button {
+  font-family: sans-serif;  
+  background-color: #92d6db; 
+  color: black; 
+  border: 2px solid #92d6db;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: black;
+}
+  </style>
+  </head>
+<body style="font-family: sans-serif">
+ 
+<center>
+  <h1>V.D. Tiwari & Co.</h1>
+  <h2>Chartered Accountants</h2>
+  <p>805, Amba Deep Building, 14, K. G. Marg, Connaught Place, New Delhi-110001</p>
+  <p>GSTIN:- 07AAFFV3629K1ZU</p>
+  <hr color="black">
+</center> 
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <center>
+            <h3>Tax Invoice</h3>
+            </center>
+        </div>
+        <div class="col-sm-6">
+            <input type="radio" id="orig" value="Original" name="type" style="width:fit-content;">
+            <label for="orig" style="width:300px;">Original for Recipient</label><br>
+            <input type="radio" id="dup" value="Duplicate" name="type" style="width:fit-content;">
+            <label for="dup" style="width:300px;">Duplicate for Supplier/Transporter</label><br>
+            <input type="radio" id="trip" value="Triplicate" name="type" style="width:fit-content;">
+            <label for="trip" style="width:300px;">Triplicate for Supplier</label>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <center>
+    <div class="row">
+        <h3>~Invoice Details~</h3>
+        <div class="col-sm-6">
+            <p>
+            <label for="in_no">Invoice No.</label>
+            <input type="text" id="in_no" name="invoice_number"><br>
+            </p>
+            <p>
+            <label for="in_date">Invoice Date</label>
+            <input type="date" id="in_date" name="invoice_date"><br>
+            </p>
+            <p>
+            <label for="state">State</label>
+            <input type="text" id="state" name="state"><br>
+            </p>
+            <p>
+            <label for="s_code">State Code</label>
+            <input type="text" id="s_code" name="state_code"><br>
+            </p>
+            <p>
+            <label for="p_num">Phone Number</label>
+            <input type="text" id="p_num" name="phone_number" maxlength="10"><br>
+            </p>
+            <p>
+            <label for="emailId">Email ID</label>
+            <input type="email" id="emailId" name="email_id"><br>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>
+            <label for="s_date">Date of Supply</label>
+            <input type="date" id="s_date" name="supply_date"><br>
+            </p>
+            <p>
+            <label for="place">Place of Supply</label>
+            <input type="text" id="place" name="supply_place"><br>
+            </p>
+        </div>
+    </div>
+    </center>
+</div>
+
+<div class="container">
+    <center>
+    <div class="row">
+        <h3>~Details of Receiver |  Billed to~</h3>
+        <div class="col-sm-6">
+            <p>
+            <label for="r_name">Name</label>
+            <input type="text" id="r_name" name="receiver_name"><br>
+            </p>
+            <p>
+            <label for="r_add">Address</label>
+            <input type="text" id="r_add" name="address"><br>
+            </p>
+            <p>
+            <label for="gst_in">GSTIN</label>
+            <input type="text" id="gst_in" name="gstn"><br>
+            </p>
+        </div>
+            
+        <div class="col-sm-6">
+            <p>
+            <label for="r_state">State</label>
+            <input type="text" id="r_state" name="receiver_state"><br>
+            </p>
+            <p>
+            <label for="state_code">State Code</label>
+            <input type="text" id="state_code" name="statecode"><br>
+            </p>
+        </div>
+        </div>
+    </div>
+    </center>
+</div>
+
+        <!-- -------------------------------------------------------------- -->
+        <center>
+        <div class="row">
+            <table border="5" id="mytable">
+                <h3>~Billable Items~</h3>
+                <tr>
+                    <th>SNo.</th>
+                    <th>Name of Service</th>                    
+                    <th>HSN/SAC</th>
+                    <th>Taxable Value</th>
+                </tr>
+                <tr id="entry">
+                    <td><input type="number"  name="snumber" style="width:50px; height: 30px;"></td>
+                    <td><textarea type="text" name="service" style="width:905px; height: 30px;"></textarea></td>
+                    <td><input type="text" name="hsn_sac" style="width:120px; height: 30px;"></td>
+                    <td><input type="text" name="taxable_val" style="width: 120px; height: 30px;"></td>
+                </tr>
+            </table>
+            <button onclick="myCreateFunction()">Add Row</button>
+            <button onclick="myDeleteFunction()">Delete row</button>
+        </div>
+    </center>
+</div>
+    <div class="container">
+    <center>
+    <div class="row">
+        <h3>~Bank Details~</h3>
+        <label for="bank" style="width: 178px; height: 25px;">Bank Name and Branch:</label>
+        <select name="bank_name" id="bank">
+        <option value="sbi">State Bank of India, Mohan Garden, New Delhi-110059</option>
+        <option value="axis">Axis Bank, Karampura</option>
+        <option value="sbicp">State Bank, Connaught Place</option>
+        <option value="axiscp">Axis Bank, Connaught Place</option>
+        </select>
+    </div>
+    </center>
+    </div>
+<script>
+function myCreateFunction() {
+  var table = document.getElementById("mytable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+
+  cell1.innerHTML = "<td><input type='number'  name='snumber' style='width:50px; height: 30px;'></td>";
+  cell2.innerHTML = "<td><textarea type='text' name='service' style='width:905px; height: 30px;'></textarea></td>";
+  cell3.innerHTML = "<td><input type='text' name='hsn_sac' style='width:120px; height: 30px;'></td>"  
+  cell4.innerHTML = "<td><input type='text' name='taxable_val' style='width: 120px; height: 30px;'></td>"
+  
+}
+
+function myDeleteFunction() {
+  document.getElementById("mytable").deleteRow(-1);
+}
+</script>
+</body>
+</html>  
